@@ -1,0 +1,114 @@
+h1 {
+  color: #D04F4F;
+  font-family: "DM Sans", sans-serif;
+}
+
+#search-bar {
+  background-color: #E7E7E7;
+  border: 0;
+  height: 50px;
+}
+
+.search-box {
+  position: relative;
+}
+.search-box i {
+  position: absolute;
+  top: 13px;
+  right: 30px;
+  font-size: 25px;
+}
+
+#ingredients {
+  width: fit-content;
+  position: relative;
+}
+#ingredients i {
+  position: absolute;
+  right: 20px;
+  font-size: 15px;
+  color: white;
+  top: 45px;
+  transition: transform 1s;
+}
+#ingredients input:focus-visible {
+  outline: none;
+}
+#ingredients:focus-within .ingredients-list {
+  display: flex;
+}
+#ingredients:focus-within i {
+  transform: rotateX(180deg);
+}
+
+#search-ingredients {
+  background-color: #3282F7;
+  border: 0;
+  border-radius: 5px;
+  height: 60px;
+  padding: 1rem;
+  cursor: pointer;
+  width: 100%;
+}
+#search-ingredients::placeholder {
+  color: white;
+  opacity: 1;
+}
+#search-ingredients:focus {
+  border-radius: 5px 5px 0 0;
+}
+#search-ingredients:focus::placeholder {
+  opacity: 0.5;
+}
+
+.ingredients-list {
+  display: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: #3282F7;
+  border-radius: 0 0 5px 5px;
+  max-width: 600px;
+}
+.ingredients-list:hover, .ingredients-list:focus, .ingredients-list:focus-within {
+  display: flex;
+}
+.ingredients-list a {
+  color: white;
+  width: 120px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 13px;
+  height: 23px;
+}
+.ingredients-list a:hover {
+  color: rgb(0, 0, 0);
+  background-color: #3282F7;
+  cursor: pointer;
+}
+
+#tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+#tags a {
+  position: relative;
+  background-color: #3282F7;
+  border-radius: 5px;
+  color: white;
+  padding: 8px 45px 10px 10px;
+  font-size: 13px;
+  margin-right: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+#tags a i {
+  position: absolute;
+  right: 10px;
+  font-size: 15px;
+  top: 10px;
+}
+#tags a i:hover {
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=style.css.map */
