@@ -19,11 +19,15 @@ h1 {
   font-size: 25px;
 }
 
-#ingredients {
+.categories {
+  display: flex;
+}
+.categories #ingredients {
   width: fit-content;
   position: relative;
+  margin-right: 20px;
 }
-#ingredients i {
+.categories #ingredients i {
   position: absolute;
   right: 20px;
   font-size: 15px;
@@ -31,17 +35,16 @@ h1 {
   top: 45px;
   transition: transform 1s;
 }
-#ingredients input:focus-visible {
+.categories #ingredients input:focus-visible {
   outline: none;
 }
-#ingredients:focus-within .ingredients-list {
+.categories #ingredients:focus-within .list {
   display: flex;
 }
-#ingredients:focus-within i {
+.categories #ingredients:focus-within i {
   transform: rotateX(180deg);
 }
-
-#search-ingredients {
+.categories #ingredients .searchbar-tags {
   background-color: #3282F7;
   border: 0;
   border-radius: 5px;
@@ -49,50 +52,205 @@ h1 {
   padding: 1rem;
   cursor: pointer;
   width: 100%;
+  color: white;
+  font-weight: 600;
 }
-#search-ingredients::placeholder {
+.categories #ingredients .searchbar-tags::placeholder {
   color: white;
   opacity: 1;
 }
-#search-ingredients:focus {
+.categories #ingredients .searchbar-tags:focus {
   border-radius: 5px 5px 0 0;
 }
-#search-ingredients:focus::placeholder {
+.categories #ingredients .searchbar-tags:focus::placeholder {
   opacity: 0.5;
 }
-
-.ingredients-list {
+.categories #ingredients .list {
   display: none;
   flex-direction: row;
   flex-wrap: wrap;
   background-color: #3282F7;
   border-radius: 0 0 5px 5px;
   max-width: 600px;
+  padding-bottom: 20px;
 }
-.ingredients-list:hover, .ingredients-list:focus, .ingredients-list:focus-within {
+.categories #ingredients .list:hover, .categories #ingredients .list:focus, .categories #ingredients .list:focus-within {
   display: flex;
 }
-.ingredients-list a {
-  color: white;
+.categories #ingredients .list .selected {
+  display: none;
+}
+.categories #ingredients .list a {
+  color: rgb(219, 219, 219);
   width: 120px;
   text-overflow: ellipsis;
   overflow: hidden;
   font-size: 13px;
   height: 23px;
 }
-.ingredients-list a:hover {
-  color: rgb(0, 0, 0);
-  background-color: #3282F7;
+.categories #ingredients .list a:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0);
+  cursor: pointer;
+}
+.categories #appliances {
+  width: fit-content;
+  position: relative;
+  margin-right: 20px;
+}
+.categories #appliances i {
+  position: absolute;
+  right: 20px;
+  font-size: 15px;
+  color: white;
+  top: 45px;
+  transition: transform 1s;
+}
+.categories #appliances input:focus-visible {
+  outline: none;
+}
+.categories #appliances:focus-within .list {
+  display: flex;
+}
+.categories #appliances:focus-within i {
+  transform: rotateX(180deg);
+}
+.categories #appliances .searchbar-tags {
+  background-color: #68D9A4;
+  border: 0;
+  border-radius: 5px;
+  height: 60px;
+  padding: 1rem;
+  cursor: pointer;
+  width: 100%;
+  color: white;
+  font-weight: 600;
+}
+.categories #appliances .searchbar-tags::placeholder {
+  color: white;
+  opacity: 1;
+}
+.categories #appliances .searchbar-tags:focus {
+  border-radius: 5px 5px 0 0;
+}
+.categories #appliances .searchbar-tags:focus::placeholder {
+  opacity: 0.5;
+}
+.categories #appliances .list {
+  display: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: #68D9A4;
+  border-radius: 0 0 5px 5px;
+  max-width: 600px;
+  padding-bottom: 20px;
+}
+.categories #appliances .list:hover, .categories #appliances .list:focus, .categories #appliances .list:focus-within {
+  display: flex;
+}
+.categories #appliances .list .selected {
+  display: none;
+}
+.categories #appliances .list a {
+  color: rgb(219, 219, 219);
+  width: 120px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 13px;
+  height: 23px;
+}
+.categories #appliances .list a:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0);
+  cursor: pointer;
+}
+.categories #ustensils {
+  width: fit-content;
+  position: relative;
+  margin-right: 20px;
+}
+.categories #ustensils i {
+  position: absolute;
+  right: 20px;
+  font-size: 15px;
+  color: white;
+  top: 45px;
+  transition: transform 1s;
+}
+.categories #ustensils input:focus-visible {
+  outline: none;
+}
+.categories #ustensils:focus-within .list {
+  display: flex;
+}
+.categories #ustensils:focus-within i {
+  transform: rotateX(180deg);
+}
+.categories #ustensils .searchbar-tags {
+  background-color: #ED6454;
+  border: 0;
+  border-radius: 5px;
+  height: 60px;
+  padding: 1rem;
+  cursor: pointer;
+  width: 100%;
+  color: white;
+  font-weight: 600;
+}
+.categories #ustensils .searchbar-tags::placeholder {
+  color: white;
+  opacity: 1;
+}
+.categories #ustensils .searchbar-tags:focus {
+  border-radius: 5px 5px 0 0;
+}
+.categories #ustensils .searchbar-tags:focus::placeholder {
+  opacity: 0.5;
+}
+.categories #ustensils .list {
+  display: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: #ED6454;
+  border-radius: 0 0 5px 5px;
+  max-width: 600px;
+  padding-bottom: 20px;
+}
+.categories #ustensils .list:hover, .categories #ustensils .list:focus, .categories #ustensils .list:focus-within {
+  display: flex;
+}
+.categories #ustensils .list .selected {
+  display: none;
+}
+.categories #ustensils .list a {
+  color: rgb(219, 219, 219);
+  width: 120px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 13px;
+  height: 23px;
+}
+.categories #ustensils .list a:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0);
   cursor: pointer;
 }
 
 #tags {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap-reverse;
+}
+#tags .ustensils_tag {
+  background-color: #ED6454;
+}
+#tags .ingredients_tag {
+  background-color: #3282F7;
+}
+#tags .appliances_tag {
+  background-color: #68D9A4;
 }
 #tags a {
   position: relative;
-  background-color: #3282F7;
   border-radius: 5px;
   color: white;
   padding: 8px 45px 10px 10px;
@@ -100,6 +258,7 @@ h1 {
   margin-right: 5px;
   margin-right: 5px;
   margin-bottom: 5px;
+  text-decoration: none;
 }
 #tags a i {
   position: absolute;

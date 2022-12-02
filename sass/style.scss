@@ -1,3 +1,5 @@
+@import "./mixins";
+
 h1 {
     color: #D04F4F;
     font-family: 'DM Sans', sans-serif;
@@ -20,91 +22,34 @@ h1 {
     }
 }
 
-#ingredients {
-    width: fit-content;
-    position: relative;
-    i {
-        position: absolute;
-        right: 20px;
-        font-size: 15px;
-        color: white;
-        top: 45px;
-        transition: transform 1s;
-
+.categories {
+    display: flex;
+    #ingredients {
+        @include tag_categorie(#3282F7); 
     }
-    input:focus-visible {
-        outline: none;
+    #appliances {
+        @include tag_categorie(#68D9A4); 
     }
-
-    &:focus-within {
-        .ingredients-list {
-            display: flex;
-        }
-
-        i {
-            transform: rotateX(180deg);
-        }
-    }
-}
-
-
-#search-ingredients {
-    background-color: #3282F7;
-    border: 0;
-    border-radius: 5px;
-    height: 60px;
-    padding: 1rem;
-    cursor: pointer;
-    width: 100%;
-
-    &::placeholder {
-        color: white;
-        opacity: 1;
-    }
-
-    &:focus {
-        border-radius: 5px 5px 0 0;
-        &::placeholder {
-            opacity: 0.5;
-        }
-    }
-}
-
-.ingredients-list {
-    display: none;
-    flex-direction: row;
-    flex-wrap: wrap;
-    background-color: #3282F7;
-    border-radius: 0 0 5px 5px;
-    max-width: 600px;
-
-    &:hover, &:focus, &:focus-within {
-        display: flex;
-    }
-
-    a {
-        color: white;
-        width: 120px;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        font-size: 13px;
-        height: 23px;
-
-        &:hover {
-            color: rgb(0, 0, 0);
-            background-color: #3282F7;
-            cursor: pointer;
-        }
+    #ustensils {
+        @include tag_categorie(#ED6454); 
     }
 }
 
 
 #tags {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
+    .ustensils_tag {
+        background-color: #ED6454;
+    }
+    .ingredients_tag {
+        background-color: #3282F7;
+    }
+    .appliances_tag {
+        background-color: #68D9A4;
+    }
     a {
         position: relative;
-        background-color: #3282F7;
         border-radius: 5px;
         color: white;
         padding: 8px 45px 10px 10px;
@@ -112,6 +57,7 @@ h1 {
         margin-right: 5px;
         margin-right: 5px;
         margin-bottom: 5px;
+        text-decoration: none;
 
         i {
             position: absolute;

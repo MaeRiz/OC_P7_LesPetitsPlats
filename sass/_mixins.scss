@@ -1,0 +1,84 @@
+@mixin tag_categorie($color) {
+    width: fit-content;
+    position: relative;
+    margin-right: 20px;
+    i {
+        position: absolute;
+        right: 20px;
+        font-size: 15px;
+        color: white;
+        top: 45px;
+        transition: transform 1s;
+
+    }
+    input:focus-visible {
+        outline: none;
+    }
+
+    &:focus-within {
+        .list {
+            display: flex;
+        }
+
+        i {
+            transform: rotateX(180deg);
+        }
+    }
+
+    .searchbar-tags {
+        background-color: $color;
+        border: 0;
+        border-radius: 5px;
+        height: 60px;
+        padding: 1rem;
+        cursor: pointer;
+        width: 100%;
+        color: white;
+        font-weight: 600;
+    
+        &::placeholder {
+            color: white;
+            opacity: 1;
+        }
+    
+        &:focus {
+            border-radius: 5px 5px 0 0;
+            &::placeholder {
+                opacity: 0.5;
+            }
+        }
+    }
+
+    .list {
+        display: none;
+        flex-direction: row;
+        flex-wrap: wrap;
+        background-color: $color;
+        border-radius: 0 0 5px 5px;
+        max-width: 600px;
+        padding-bottom: 20px;
+    
+        &:hover, &:focus, &:focus-within {
+            display: flex;
+        }
+    
+        .selected {
+            display: none;
+        }
+    
+        a {
+            color: rgb(219, 219, 219);
+            width: 120px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            font-size: 13px;
+            height: 23px;
+    
+            &:hover {
+                color: rgb(255, 255, 255);
+                background-color: #ffffff00;
+                cursor: pointer;
+            }
+        }
+    }
+}

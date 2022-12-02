@@ -20,15 +20,34 @@
     </header>
     <main>
         <div class="search-box container">
+
             <form>
                 <input type="search" id="search-bar" class="form-control" placeholder="Rechercher une recette" aria-label="Search" />
                 <label for="search-bar"><i class="fa fa-search"></i></label>
             </form>
+
             <span id="tags"></span>
-            <div id="ingredients">
-                <label for="search-ingredients"><i id="icon" class="fa-solid fa-angle-down"></i></label>
-                <input type="search" name="ingredients" id="search-ingredients" placeholder="Ingrédients" onfocus="this.placeholder='Rechercher un ingrédient'" onblur="this.placeholder='Ingrédients'">
-                <div class="ingredients-list">
+
+            <div class="categories">
+                <div id="ingredients">
+                    <label for="search-ingredients"><i id="icon" class="fa-solid fa-angle-down"></i></label>
+                    <input type="search" name="ingredients" id="search-ingredients" class="searchbar-tags" placeholder="Ingrédients" onkeyup="searchTag(this)" onfocus="this.placeholder='Rechercher un ingrédient'" onblur="this.placeholder='Ingrédients'">
+                    <div id="ingredients-list" class="list">
+                    </div>
+                </div>
+
+                <div id="appliances">
+                    <label for="search-appliances"><i id="icon" class="fa-solid fa-angle-down"></i></label>
+                    <input type="search" name="appliances" id="search-appliances" class="searchbar-tags" placeholder="Appareils" onkeyup="searchTag(this)" onfocus="this.placeholder='Rechercher un appareil'" onblur="this.placeholder='Appareils'">
+                    <div id="appliances-list" class="list">
+                    </div>
+                </div>
+
+                <div id="ustensils">
+                    <label for="search-ustensils"><i id="icon" class="fa-solid fa-angle-down"></i></label>
+                    <input type="search" name="ustensils" id="search-ustensils" class="searchbar-tags" placeholder="Ustensiles" onkeyup="searchTag(this)" onfocus="this.placeholder='Rechercher un ustensile'" onblur="this.placeholder='Ustensiles'">
+                    <div id="ustensils-list" class="list">
+                    </div>
                 </div>
             </div>
 
