@@ -1,3 +1,9 @@
+let searchCriteriaTags = {
+    "ingredients": [],
+    "appliances": [],
+    "ustensils": []
+}
+
 function getIngredients() {
     let ingredientsList =  []
 
@@ -68,16 +74,26 @@ function selectTag(element) {
     searchTagBar.focus();
 
     const tag = document.createElement('a');
-    console.log(element.parentElement.parentElement)
     tag.classList.add(element.parentElement.parentElement.id + "_tag");
     tag.innerHTML = element.innerText + '<i class="fa-regular fa-circle-xmark" onclick="removeTag(this, ' + element.id +')"></i>';
     tagSection.appendChild(tag);
     element.classList.add('selected');
+
+    searchCriteriaTags[element.parentElement.parentElement.id].push(element.innerText);
 }
 
 function removeTag(element, tagid) {
     tagid.style.display = "block";
     tagid.classList.remove('selected');
+    
+    for(cat in searchCriteriaTags) {
+        for(i =0; i < searchCriteriaTags[cat].length; i++){
+            if(searchCriteriaTags[cat][i] === element.parentElement.innerText) {
+                searchCriteriaTags[cat].splice(searchCriteriaTags[cat].indexOf(searchCriteriaTags[cat][i]), 1);
+            }
+        }
+    }
+
     element.parentElement.remove();
 }
 

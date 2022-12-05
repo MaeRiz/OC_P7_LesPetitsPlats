@@ -70,3 +70,63 @@ h1 {
         }
     }
 }
+
+#recipes {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .recipe-card {
+        width: 380px;
+        height: 380px;
+        background-color: #C7BEBE;
+        margin-top: 50px;
+        position: relative;
+        border-radius: 5px;
+
+        .details {
+            height: 50%;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            background-color: #E7E7E7;
+            border-radius: 5px;
+
+            .title {
+                position: absolute;
+                top: 15px;
+                left: 15px;
+            }
+
+            .time {
+                position: absolute;
+                right: 15px;
+                top: 15px;
+                font-size: 20px;
+                font-weight: 700;
+            }
+
+            .ingredient {
+                position: absolute;
+                top: 60px;
+                left: 15px;
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                font-size: 14px;
+            }
+
+            .desc {
+                position: absolute;
+                top: 60px;
+                right: 15px;
+                max-width: 45%;
+                max-height: 70%;
+                overflow: hidden;
+                font-size: 13px;
+
+            }
+        }
+    }
+
+}
