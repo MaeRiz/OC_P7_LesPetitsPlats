@@ -96,6 +96,11 @@ h1 {
                 position: absolute;
                 top: 15px;
                 left: 15px;
+                font-size: 20px;
+                width: 240px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
             }
 
             .time {
@@ -103,7 +108,7 @@ h1 {
                 right: 15px;
                 top: 15px;
                 font-size: 20px;
-                font-weight: 700;
+                font-weight: 600;
             }
 
             .ingredient {
@@ -113,7 +118,17 @@ h1 {
                 list-style: none;
                 padding: 0;
                 margin: 0;
-                font-size: 14px;
+                font-size: 13px;
+                line-height: 18px;
+                width: 43%;
+                li {
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+                span {
+                    font-weight: 600;
+                }
             }
 
             .desc {
@@ -121,9 +136,13 @@ h1 {
                 top: 60px;
                 right: 15px;
                 max-width: 45%;
-                max-height: 70%;
                 overflow: hidden;
                 font-size: 13px;
+                text-overflow: ellipsis;
+                display: -webkit-box !important;
+                -webkit-line-clamp: 7;
+                -webkit-box-orient: vertical;
+                line-height: 15px;
 
             }
         }

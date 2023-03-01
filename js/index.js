@@ -110,9 +110,70 @@ function searchTag(element) {
         }
       }
     }
-  } 
+  }
+
+function createRecipeDOM(list) {
+    const RecipesContainer = document.querySelector('#recipes');
+    RecipesContainer.innerHTML = '';
+
+    for(let i = 0; i < recipes.length; i++){
+
+        const recipe_card = document.createElement('div');
+        recipe_card.classList.add('recipe-card');
+
+        const details = document.createElement('div');
+        details.classList.add('details');
+
+        const title = document.createElement('h3');
+        title.classList.add('title');
+
+        const time = document.createElement('p');
+        time.classList.add('time');
+
+        const desc = document.createElement('p');
+        desc.classList.add('desc');
+
+        const ingredients = document.createElement('ul');
+        ingredients.classList.add('ingredient');
+
+        recipes[i].ingredients.forEach(element => {
+            const ingredientDOM = document.createElement('li');
+
+            if (element.quantity === undefined) {element.quantity = "";} else {element.quantity = `: ${element.quantity}`};
+            if (element.unit === undefined) {element.unit = "";};
+            if (element.unit === "grammes"){element.unit = "g"};
+
+
+            ingredientDOM.innerHTML = `<span class="ingredient-name">${element.ingredient}</span>${element.quantity} ${element.unit}`;
+            ingredients.appendChild(ingredientDOM);
+
+        });
+
+        title.innerHTML = recipes[i].name;
+        time.innerHTML = ` <i class="fa-regular fa-clock"></i> ${recipes[i].time} Min`;
+        desc.innerHTML = recipes[i].description;
+
+        details.appendChild(title);
+        details.appendChild(time);
+        details.appendChild(ingredients);
+        details.appendChild(desc);
+
+        recipe_card.appendChild(details);
+
+        RecipesContainer.appendChild(recipe_card);
+    }
+}
+
+function updateRecipeList(type) {
+    // Mise a jour de la liste a partir des criteres
+    // récupération des nouveau tags avec les fonctions getIngredients, getAppliances, getUstensils
+    createDomTags(getIngredients(), document.querySelector("#ingredients-list"));
+    createDomTags(getAppliances(), document.querySelector("#appliances-list"));
+    createDomTags(getUstensils(), document.querySelector("#ustensils-list"));
+}
 
 function init () {
+    createRecipeDOM(recipes);
     /* Create DOM items for ingredient; param 1: get ingredients list, param 2 section queryselected*/
     createDomTags(getIngredients(), document.querySelector("#ingredients-list"));
     createDomTags(getAppliances(), document.querySelector("#appliances-list"));
