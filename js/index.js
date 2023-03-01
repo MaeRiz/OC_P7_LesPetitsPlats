@@ -143,10 +143,8 @@ function createRecipeDOM(list) {
             if (element.unit === undefined) {element.unit = "";};
             if (element.unit === "grammes"){element.unit = "g"};
 
-
             ingredientDOM.innerHTML = `<span class="ingredient-name">${element.ingredient}</span>${element.quantity} ${element.unit}`;
             ingredients.appendChild(ingredientDOM);
-
         });
 
         title.innerHTML = recipes[i].name;
