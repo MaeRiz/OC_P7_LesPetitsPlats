@@ -21,6 +21,9 @@ h1 {
 
 .categories {
   display: flex;
+  height: 100px;
+  position: inherit;
+  z-index: 10;
 }
 .categories #ingredients {
   width: fit-content;
@@ -76,9 +79,6 @@ h1 {
 }
 .categories #ingredients .list:hover, .categories #ingredients .list:focus, .categories #ingredients .list:focus-within {
   display: flex;
-}
-.categories #ingredients .list .selected {
-  display: none;
 }
 .categories #ingredients .list a {
   color: rgb(219, 219, 219);
@@ -148,9 +148,6 @@ h1 {
 .categories #appliances .list:hover, .categories #appliances .list:focus, .categories #appliances .list:focus-within {
   display: flex;
 }
-.categories #appliances .list .selected {
-  display: none;
-}
 .categories #appliances .list a {
   color: rgb(219, 219, 219);
   width: 120px;
@@ -219,9 +216,6 @@ h1 {
 .categories #ustensils .list:hover, .categories #ustensils .list:focus, .categories #ustensils .list:focus-within {
   display: flex;
 }
-.categories #ustensils .list .selected {
-  display: none;
-}
 .categories #ustensils .list a {
   color: rgb(219, 219, 219);
   width: 120px;
@@ -240,13 +234,13 @@ h1 {
   display: flex;
   flex-wrap: wrap-reverse;
 }
-#tags .ustensils_tag {
+#tags .ustensil_tag {
   background-color: #ED6454;
 }
-#tags .ingredients_tag {
+#tags .ingredient_tag {
   background-color: #3282F7;
 }
-#tags .appliances_tag {
+#tags .appliance_tag {
   background-color: #68D9A4;
 }
 #tags a {

@@ -24,6 +24,9 @@ h1 {
 
 .categories {
     display: flex;
+    height: 100px;
+    position: inherit;
+    z-index: 10;
     #ingredients {
         @include tag_categorie(#3282F7); 
     }
@@ -39,13 +42,13 @@ h1 {
 #tags {
     display: flex;
     flex-wrap: wrap-reverse;
-    .ustensils_tag {
+    .ustensil_tag {
         background-color: #ED6454;
     }
-    .ingredients_tag {
+    .ingredient_tag {
         background-color: #3282F7;
     }
-    .appliances_tag {
+    .appliance_tag {
         background-color: #68D9A4;
     }
     a {
