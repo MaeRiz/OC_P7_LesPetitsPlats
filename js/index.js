@@ -1,17 +1,20 @@
-let searchCriteriaTags = {
+let searchCriterias = {
     "bar": "",
     "ingredients": [],
     "appliances": [],
     "ustensils": []
-}
+};
+
+let tagsList = {};
+let recipes_list = JSON.parse(JSON.stringify(recipes));
 
 function getIngredients() {
     let ingredientsList =  []
 
-    for(let i = 0; i < recipes.length; i++){
-        for(let y = 0; y < recipes[i].ingredients.length; y++){
-            if(!ingredientsList.includes(recipes[i].ingredients[y].ingredient)){
-                ingredientsList.push(recipes[i].ingredients[y].ingredient);
+    for(let i = 0; i < recipes_list.length; i++){
+        for(let y = 0; y < recipes_list[i].ingredients.length; y++){
+            if(!ingredientsList.includes(recipes_list[i].ingredients[y].ingredient)){
+                ingredientsList.push(recipes_list[i].ingredients[y].ingredient);
             }
         }
     }
@@ -26,9 +29,9 @@ function getIngredients() {
 function getAppliances() {
     let appliancesList = []
 
-    for(let i = 0; i < recipes.length; i++){
-        if(!appliancesList.includes(recipes[i].appliance)) {
-            appliancesList.push(recipes[i].appliance);
+    for(let i = 0; i < recipes_list.length; i++){
+        if(!appliancesList.includes(recipes_list[i].appliance)) {
+            appliancesList.push(recipes_list[i].appliance);
         }
     }
     return (appliancesList.sort(function (a, b) {
@@ -41,8 +44,8 @@ function getAppliances() {
 function getUstensils() {
     let ustensilsList = []
 
-    for(let i = 0; i < recipes.length; i++){
-        for(ustensil of recipes[i].ustensils) {
+    for(let i = 0; i < recipes_list.length; i++){
+        for(ustensil of recipes_list[i].ustensils) {
             if(!ustensilsList.includes(ustensil)) {
                 ustensilsList.push(ustensil);
             }
@@ -56,23 +59,21 @@ function getUstensils() {
     }));
 }
 
-let tagsList = {
-    "ingredients": getIngredients(),
-    "appliances": getAppliances(),
-    "ustensils": getUstensils()
-}
+
 
 function createDomTags(list, section, category) {
     section.innerHTML = "";
     let i = 0
     for(tag of list) {
-        let item = document.createElement('a');
-        item.setAttribute('onclick', `selectTag(this, '${category}')`);
-        item.classList.add('dropdown-item');
-        item.id = section.parentElement.id + '_' + i;
-        item.textContent = tag;
-        section.appendChild(item);
-        i++;
+        if(searchCriterias[`${category}s`].indexOf(tag) === -1){
+            let item = document.createElement('a');
+            item.setAttribute('onclick', `selectTag(this, '${category}')`);
+            item.classList.add('dropdown-item');
+            item.id = section.parentElement.id + '_' + i;
+            item.textContent = tag;
+            section.appendChild(item);
+            i++;
+        };
     }
 }
 
@@ -82,24 +83,21 @@ function selectTag(thisitem, category) {
     const searchTagBar = thisitem.parentElement.parentElement.childNodes[3]; //Searchbar Tag
     searchTagBar.focus();
     
-    searchCriteriaTags[`${category}s`].push(thisitem.innerText);
-    tagsList[`${category}s`].splice(tagsList[`${category}s`].indexOf(thisitem.innerText), 1);
+    searchCriterias[`${category}s`].push(thisitem.innerText);
 
     const tag = document.createElement('a');
     tag.classList.add(category + "_tag");
     tag.innerHTML = thisitem.innerText + `<i class="fa-regular fa-circle-xmark" onclick="removeTag(this, '${category}')"></i>`;
     tagSection.appendChild(tag);
 
-    updateTags(); 
+    updateRecipeList();
 
 }
 
 function removeTag(thisitem, category) {
-
-    tagsList[`${category}s`].push(thisitem.parentElement.innerText);
-    searchCriteriaTags[`${category}s`].splice(searchCriteriaTags[`${category}s`].indexOf(thisitem.parentElement.innerText), 1);
+    searchCriterias[`${category}s`].splice(searchCriterias[`${category}s`].indexOf(thisitem.parentElement.innerText), 1);
     thisitem.parentElement.remove();
-    updateTags();
+    updateRecipeList();
 }
 
 function searchTag(element) {
@@ -170,28 +168,36 @@ function createRecipeDOM(list) {
 
 }
 
-function updateRecipeList(type) {
-    // Mise a jour de la liste a partir des criteres
-    // récupération des nouveau tags avec les fonctions getIngredients, getAppliances, getUstensils
-    //createDomTags(ingredients_list, document.querySelector("#ingredients-list"));
-    //createDomTags(appliances_list, document.querySelector("#appliances-list"));
-    //createDomTags(ustensils_list, document.querySelector("#ustensils-list"));
+function updateRecipeList() {
+
+    // Add algo here
+    
+    recipes_list = JSON.parse(JSON.stringify(recipes));
+
+    updateTags();
+    createRecipeDOM(recipes_list);
 }
 
 function updateTags() {
+
+    tagsList = {
+        "ingredients": getIngredients(),
+        "appliances": getAppliances(),
+        "ustensils": getUstensils()
+    }
+
     createDomTags(tagsList.ingredients, document.querySelector("#ingredients-list"), "ingredient");
     createDomTags(tagsList.appliances, document.querySelector("#appliances-list"), "appliance");
     createDomTags(tagsList.ustensils, document.querySelector("#ustensils-list"), "ustensil");
 };
 
 function init () {
-    createRecipeDOM(recipes);
-    /* Create DOM items for ingredient; param 1: get ingredients list, param 2 section queryselected*/
+    createRecipeDOM(recipes_list);
     updateTags()
 
     document.querySelector("#search-bar").addEventListener('input', function() {
         if(this.value.length >= 3){
-            searchCriteriaTags.bar = this.value;
+            searchCriterias.bar = this.value;
         }
       });
 }   
