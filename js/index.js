@@ -198,6 +198,7 @@ function init () {
     document.querySelector("#search-bar").addEventListener('input', function() {
         if(this.value.length >= 3){
             searchCriterias.bar = this.value;
+            updateRecipeList();
         }
       });
 }   
