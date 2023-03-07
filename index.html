@@ -22,7 +22,7 @@
         <div class="search-box container">
 
             <form>
-                <input type="search" id="search-bar" class="form-control" placeholder="Rechercher une recette" aria-label="Search" />
+                <input type="search" id="search-bar" class="form-control" placeholder="Rechercher une recette" aria-label="Search">
                 <label for="search-bar"><i class="fa fa-search"></i></label>
             </form>
 
@@ -30,21 +30,21 @@
 
             <div class="categories">
                 <div id="ingredients">
-                    <label for="search-ingredients"><i id="icon" class="fa-solid fa-angle-down"></i></label>
+                    <label for="search-ingredients"><i class="fa-solid fa-angle-down"></i></label>
                     <input type="search" name="ingredients" id="search-ingredients" class="searchbar-tags" placeholder="Ingrédients" onkeyup="searchTag(this)" onfocus="this.placeholder='Rechercher un ingrédient'" onblur="this.placeholder='Ingrédients'">
                     <div id="ingredients-list" class="list">
                     </div>
                 </div>
 
                 <div id="appliances">
-                    <label for="search-appliances"><i id="icon" class="fa-solid fa-angle-down"></i></label>
+                    <label for="search-appliances"><i class="fa-solid fa-angle-down"></i></label>
                     <input type="search" name="appliances" id="search-appliances" class="searchbar-tags" placeholder="Appareils" onkeyup="searchTag(this)" onfocus="this.placeholder='Rechercher un appareil'" onblur="this.placeholder='Appareils'">
                     <div id="appliances-list" class="list">
                     </div>
                 </div>
 
                 <div id="ustensils">
-                    <label for="search-ustensils"><i id="icon" class="fa-solid fa-angle-down"></i></label>
+                    <label for="search-ustensils"><i class="fa-solid fa-angle-down"></i></label>
                     <input type="search" name="ustensils" id="search-ustensils" class="searchbar-tags" placeholder="Ustensiles" onkeyup="searchTag(this)" onfocus="this.placeholder='Rechercher un ustensile'" onblur="this.placeholder='Ustensiles'">
                     <div id="ustensils-list" class="list">
                     </div>
@@ -53,14 +53,16 @@
 
         </div>
 
-        <section id="recipes" class="container">
-        </section>
+        <div id="recipes" class="container">
+        </div>
     </main>
+
+    <script src="https://kit.fontawesome.com/bb1f6f90ac.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="./js/recipes.js"></script>
+    <script src="./js/index.js"></script>
 </body>
-<script src="https://kit.fontawesome.com/bb1f6f90ac.js" crossorigin="anonymous"></script>
-<!-- Bootstrap JS bundle -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script src="./js/recipes.js"></script>
-<script src="./js/index.js"></script>
+
 
 </html>
