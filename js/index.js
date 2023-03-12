@@ -169,13 +169,65 @@ function createRecipeDOM(list) {
 }
 
 function updateRecipeList() {
-
-    // Add algo here
     
-    recipes_list = JSON.parse(JSON.stringify(recipes));
+    recipes_list = [];
+
+    /* Filtre de la barre de recherche */
+    for (recipe of recipes) {
+        if(recipe.name.toUpperCase().indexOf(searchCriterias.bar.toUpperCase()) > -1 || recipe.description.toUpperCase().indexOf(searchCriterias.bar.toUpperCase()) > -1){
+            recipes_list.push(recipe);
+        } else {
+            let ing_list = [];
+            for (ing of recipe.ingredients) {
+                ing_list.push(ing.ingredient);
+            }
+            if (ing_list.join(' ').toUpperCase().indexOf(searchCriterias.bar.toUpperCase()) > -1 ){
+                recipes_list.push(recipe);
+            }
+        }
+    }
+
+    /* Filtre des ingredients */
+    let i = recipes_list.length;
+    while(i--) {
+
+        let ing_list = [];
+        for (ing of recipes_list[i].ingredients) {
+            ing_list.push(ing.ingredient);
+        }
+        for(ing in searchCriterias.ingredients) {
+            if (ing_list.join(' ').toUpperCase().indexOf(searchCriterias.ingredients[ing].toUpperCase()) === -1){
+                recipes_list.splice(i, 1);
+                break
+            }
+        }
+    }
+
+    /* Filtre des ustensils */
+    i = recipes_list.length;
+    while(i--) {
+        for (ust in searchCriterias.ustensils) {
+            if (recipes_list[i].ustensils.join(' ').toUpperCase().indexOf(searchCriterias.ustensils[ust].toUpperCase()) === -1){
+                recipes_list.splice(i, 1);
+                break
+            }
+        }
+    }
+
+    /* Filtre des appareils */
+    i = recipes_list.length;
+    while(i--) {
+        for (appliance in searchCriterias.appliances) {
+            if (recipes_list[i].appliance.toUpperCase() != searchCriterias.appliances[appliance].toUpperCase()){
+                recipes_list.splice(i, 1);
+                break
+            }
+        }
+    }
+
 
     updateTags();
-    createRecipeDOM(recipes_list);
+    createRecipeDOM(JSON.parse(JSON.stringify(recipes_list)));
 }
 
 function updateTags() {
@@ -196,10 +248,10 @@ function init () {
     updateTags()
 
     document.querySelector("#search-bar").addEventListener('input', function() {
-        if(this.value.length >= 3){
-            searchCriterias.bar = this.value;
+        searchCriterias.bar = this.value;
+        if(this.value.length >= 3 || this.value.length === 0){
             updateRecipeList();
-        }
+        };
       });
 }   
 
