@@ -196,10 +196,10 @@ function init () {
     updateTags()
 
     document.querySelector("#search-bar").addEventListener('input', function() {
-        if(this.value.length >= 3){
-            searchCriterias.bar = this.value;
+        searchCriterias.bar = this.value;
+        if(this.value.length >= 3 || this.value.length === 0){
             updateRecipeList();
-        }
+        };
       });
 }   
 
