@@ -169,13 +169,46 @@ function createRecipeDOM(list) {
 }
 
 function updateRecipeList() {
-
-    // Add algo here
     
-    recipes_list = JSON.parse(JSON.stringify(recipes));
+    recipes_list = [];
+
+    recipes.forEach(function(item, index, object) {
+        if(item.name.toUpperCase().indexOf(searchCriterias.bar.toUpperCase()) > -1 
+        || item.description.toUpperCase().indexOf(searchCriterias.bar.toUpperCase()) > -1
+        || item.ingredients.map(x => x.ingredient).join(' ').toUpperCase().indexOf(searchCriterias.bar.toUpperCase()) > -1){
+            recipes_list.push(item);
+        };
+    });
+
+    // Filtre ingredients
+    recipes_list.reduceRight(function(acc, item, index, object) {
+        searchCriterias.ingredients.every(ing => {
+            if(item.ingredients.map(x => x.ingredient).join(' ').toUpperCase().indexOf(ing.toUpperCase()) === -1) {
+                recipes_list.splice(index, 1);
+                return false;
+            };
+            return true;
+        });
+    }, []);
+
+    // Filtre ustensils
+    recipes_list.reduceRight(function(acc, item, index, object) {
+        searchCriterias.ustensils.every(ust => {
+            if(item.ustensils.join(' ').toUpperCase().indexOf(ust.toUpperCase()) === -1) {
+                recipes_list.splice(index, 1);
+                return false;
+            };
+            return true;
+        });
+    }, []);
+
+    // Filtre Appareils
+    if (searchCriterias.appliances[0]) {
+        recipes_list = recipes_list.filter(item => item.appliance.toUpperCase() === searchCriterias.appliances[0].toUpperCase())
+    };
 
     updateTags();
-    createRecipeDOM(recipes_list);
+    createRecipeDOM(JSON.parse(JSON.stringify(recipes_list)));
 }
 
 function updateTags() {
